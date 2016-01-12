@@ -1,4 +1,6 @@
 This Project is Dvd Rental System and it is not finished yet.
 With this project I finished the course in SwiftAcademy.
 It is created with Visual Studio 2013.
-To test how work charges edit date of the dvd return.(See image for more details)
+To test how work charges edit date of the dvd return.(See image for more details).
+To know how to view poster see "Show Poster" image.
+
