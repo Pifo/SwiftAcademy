@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbRentals.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dvds">
+    <Key>
+      <PropertyRef Name="DvdId" />
+    </Key>
+    <Property Name="DvdId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DvdNumber" Type="int" Nullable="false" />
+    <Property Name="Available" Type="bit" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Genre" Type="int" Nullable="false" />
+    <Property Name="RentId" Type="int" />
+  </EntityType>
+  <EntityType Name="Rents">
+    <Key>
+      <PropertyRef Name="RentId" />
+    </Key>
+    <Property Name="RentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="ReturnDate" Type="datetime" />
+    <Property Name="OverduedDays" Type="int" />
+    <Property Name="Charge" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="CardNumber" Type="int" Nullable="false" />
+    <Property Name="NumberOfCharges" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_RentDvd">
+    <End Role="Rents" Type="Self.Rents" Multiplicity="0..1" />
+    <End Role="Dvds" Type="Self.Dvds" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rents">
+        <PropertyRef Name="RentId" />
+      </Principal>
+      <Dependent Role="Dvds">
+        <PropertyRef Name="RentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRent">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Rents" Type="Self.Rents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Rents">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbRentalsStoreContainer">
+    <EntitySet Name="Dvds" EntityType="Self.Dvds" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rents" EntityType="Self.Rents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_RentDvd" Association="Self.FK_RentDvd">
+      <End Role="Rents" EntitySet="Rents" />
+      <End Role="Dvds" EntitySet="Dvds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRent" Association="Self.FK_UserRent">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Rents" EntitySet="Rents" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

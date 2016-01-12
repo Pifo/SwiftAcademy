@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DbRentalsStoreContainer" CdmEntityContainer="DbRentalsContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(DbRentals.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="NumberOfCharges" ColumnName="NumberOfCharges" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dvds">
+      <EntityTypeMapping TypeName="IsTypeOf(DbRentals.Dvd)">
+        <MappingFragment StoreEntitySet="Dvds">
+          <ScalarProperty Name="DvdId" ColumnName="DvdId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="DvdNumber" ColumnName="DvdNumber" />
+          <ScalarProperty Name="Available" ColumnName="Available" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="RentId" ColumnName="RentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rents">
+      <EntityTypeMapping TypeName="IsTypeOf(DbRentals.Rent)">
+        <MappingFragment StoreEntitySet="Rents">
+          <ScalarProperty Name="RentId" ColumnName="RentId" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="OverduedDays" ColumnName="OverduedDays" />
+          <ScalarProperty Name="Charge" ColumnName="Charge" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
